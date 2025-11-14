@@ -3,7 +3,7 @@ Group Members:
 Ibraheem Muhammad, Luis Selgado, Luke Chua Marquez, and 
 
 Email: 
-imuhammad23@csu.fullerton.edu , , luke.chua@csu.fullerton.edu, 
+imuhammad23@csu.fullerton.edu, , luke.chua@csu.fullerton.edu, 
 
 Contributions:
 
