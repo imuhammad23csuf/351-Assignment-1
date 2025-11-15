@@ -1,9 +1,11 @@
 # 351-Assignment-1
 Group Members:
+
 Ibraheem Muhammad, Luis Selgado, Luke Chua Marquez, and Simon Kang
 
 Email: 
-imuhammad23@csu.fullerton.edu, , luke.chua@csu.fullerton.edu, simonkang@csu.fullerton.edu
+
+imuhammad23@csu.fullerton.edu, luke.chua@csu.fullerton.edu, simonkang@csu.fullerton.edu
 
 Contributions:
 
@@ -29,7 +31,8 @@ Questions:
 
 4. Suppose one of the fetcher children crashes. Will this affect other children? Explain. What is your conclusion regarding the benefits or disadvantages of isolating each fetch task within a different process?
 
-Extra Credit: 
+Extra Credit:
+
 Yes, extra credit was implemented.
 
 Anything Special:
