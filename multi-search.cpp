@@ -7,7 +7,22 @@
 #include <vector>
 #include <string>
 
+
 using namespace std;
+
+//Funtion to search the given section of the array for key using linear search
+int linear_search(const vector<string>& array, const string& key, size_t start, size_t end)
+{
+    for (size_t i = start; i < end; i++) 
+    {
+        if (array[i].find(key) != string::npos)
+        {
+            return 0;
+        }
+    }
+
+    return 1;
+}
 
 int main(int argc, char* argv[]) 
 {
@@ -47,11 +62,11 @@ int main(int argc, char* argv[])
     for (int i = 0; i < processNum; i++)
     {
         pid_t pid = fork();
-        if  (pid < 0) {
+        if (pid < 0) {
             fprintf(stderr, "Fork Failed");
-            exit(-1)
+            exit(-1);
         } else if (pid == 0) {
-            int stringFound = linear_search(array, key, start, end);
+            int stringFound = linear_search(array, key, start[i], end[i]);
             exit(stringFound);
         } 
         child[i] = pid;
@@ -63,7 +78,7 @@ int main(int argc, char* argv[])
     {
         if (wait(&exit_status) < 1) 
         {
-            perrer("wait");
+            perror("wait");
             exit(-1);
         }
 
@@ -80,18 +95,4 @@ int main(int argc, char* argv[])
 
     cout << "No string found" << endl;
     return 0;
-}
-
-//Funtion to search the given section of the array for key using linear search
-int linear_search(const vector<string>& array, const string& key, size_t start, size_t end)
-{
-    for (size_t i = start; i < end; i++) 
-    {
-        if (array[i].find(key) != string::npos)
-        {
-            return 0;
-        }
-    }
-
-    return 1;
 }
