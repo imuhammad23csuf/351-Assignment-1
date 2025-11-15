@@ -1,9 +1,9 @@
 # 351-Assignment-1
 Group Members:
-Ibraheem Muhammad, Luis Selgado, Luke Chua Marquez, and 
+Ibraheem Muhammad, Luis Selgado, Luke Chua Marquez, and Simon Kang
 
 Email: 
-imuhammad23@csu.fullerton.edu, , luke.chua@csu.fullerton.edu, 
+imuhammad23@csu.fullerton.edu, , luke.chua@csu.fullerton.edu, simonkang@csu.fullerton.edu
 
 Contributions:
 
