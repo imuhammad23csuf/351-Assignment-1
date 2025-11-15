@@ -18,11 +18,6 @@ int main(int argc, char* argv[])
 
     //reading the file
     ifstream file(fileName);
-    if (!file.is.open())
-    {
-        cerr << "Error opening file" << endl;
-        return 1;
-    }
 
     //loading contents of file into array
     vector<string> array;
@@ -33,7 +28,38 @@ int main(int argc, char* argv[])
     }
     file.close();
 
+    size_t section = array.size() / processNum;
+    vector<pid_t> pids(processNum);
+
     
+
+    
+
+    int exit_status;
+    bool stringFound = false;
+
+    for (int i = 0; i < processNum; ++i)
+    {
+        if (wait(&exit_status) < 1) 
+        {
+            perrer("wait");
+            exit(-1);
+        }
+
+        if (WEXITSTATUS(exit_status) == 0) 
+        {
+            stringFound = true;
+        }
+    }
+
+    if (stringFound)
+    {
+        cout << "String found" << endl;
+    } else {
+        cout << "No string found" << endl;
+    }
+
+
 
 
 
