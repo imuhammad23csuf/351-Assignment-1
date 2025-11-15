@@ -29,16 +29,37 @@ int main(int argc, char* argv[])
     file.close();
 
     size_t section = array.size() / processNum;
-    vector<pid_t> pids(processNum);
+    vector<size_t> start(processNum);
+    vector<size_t> end(processNum);
+    vector<size_t> child(processNum);
 
-    
+    for (int i = 0; i < processNum; i++)
+    {
+        start[i] = i * section;
+        if (i == processNum - 1)
+        {
+            end[i] = array.size();
+        } else {
+            end[i] = (i + 1) * section;
+        }
+    }
 
-    
+    for (int i = 0; i < processNum; i++)
+    {
+        pid_t pid = fork();
+        if  (pid < 0) {
+            fprintf(stderr, "Fork Failed");
+            exit(-1)
+        } else if (pid == 0) {
+            int stringFound = linear_search(array, key, start, end);
+            exit(stringFound);
+        } 
+        child[i] = pid;
+    }  
 
     int exit_status;
-    bool stringFound = false;
 
-    for (int i = 0; i < processNum; ++i)
+    for (int i = 0; i < processNum; i++)
     {
         if (wait(&exit_status) < 1) 
         {
@@ -48,29 +69,23 @@ int main(int argc, char* argv[])
 
         if (WEXITSTATUS(exit_status) == 0) 
         {
-            stringFound = true;
+            cout << "String found ending process" << endl;
+            for (int i = 0; i < processNum; i++)
+            {
+                kill(child[i], SIGKILL);
+            }
+            return 0;
         }
     }
 
-    if (stringFound)
-    {
-        cout << "String found" << endl;
-    } else {
-        cout << "No string found" << endl;
-    }
-
-
-
-
-
-
-
+    cout << "No string found" << endl;
+    return 0;
 }
 
 //Funtion to search the given section of the array for key using linear search
 int linear_search(const vector<string>& array, const string& key, size_t start, size_t end)
 {
-    for (size_t i = start; i <) 
+    for (size_t i = start; i < end; i++) 
     {
         if (array[i].find(key) != string::npos)
         {
